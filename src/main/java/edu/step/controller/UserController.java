@@ -51,8 +51,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<?> getAuthTokenAfterRegister(@RequestBody User user) {
-        User added = userService.addUser(new User(user));
-        if (added == null) {
+        if (userService.addUser(new User(user)) == null) {
             return ResponseEntity.badRequest().build();
         }
         return getAuthToken(user);
@@ -66,10 +65,10 @@ public class UserController {
     @PutMapping
     public ResponseEntity<?> updateCurrentUser(@RequestBody User user, Principal principal) {
         User userToUpdate = userService.getUserByEmail(principal.getName());
-        if (userService.updateUserById(user, userToUpdate.getId()) == null) {
+        if (userService.updateUserById(new User(user), userToUpdate.getId()) == null) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok().build();
+        return getAuthToken(user);
     }
 
     private void authenticate(
