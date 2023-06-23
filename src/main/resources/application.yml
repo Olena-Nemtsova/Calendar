@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://dpg-ci9fk0l9aq02ihsl9kf0-a.oregon-postgres.render.com:5432/calendar_db_a7k5
+    driver-class-name: org.postgresql.Driver
+    password: ${DB_PASSWORD}
+    username: ${DB_USERNAME}
+  flyway:
+    url: jdbc:postgresql://dpg-ci9fk0l9aq02ihsl9kf0-a.oregon-postgres.render.com:5432/calendar_db_a7k5
+    user: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    baseline-on-migrate: true
+    clean-disabled: true
+    out-of-order: true
+    locations: classpath:db/flyway
+    driver-class-name: org.postgresql.Driver
+server:
+  port: 8081
+
+security:
+  jwt:
+    token:
+      secret-key: Hardstyle is an electronic dance genre that emerged in the late 90s in the Netherlands.
+      expire-milliseconds: 1800000

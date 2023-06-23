@@ -1,0 +1,20 @@
+databases:
+  - name: PostgreSQL-Calendar
+    plan: free
+    databaseName: calendar_db_a7k5
+    user: calendar_db_user
+
+services:
+  - type: web
+    name: app
+    runtime: docker
+    plan: free
+    envVars:
+      - key: DB_USERNAME
+        fromDatabase:
+          name: PostgreSQL-Calendar
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: PostgreSQL-Calendar
+          property: password
