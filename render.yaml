@@ -6,7 +6,7 @@ databases:
 
 services:
   - type: web
-    name: app
+    name: Calendar
     runtime: docker
     plan: free
     envVars:
